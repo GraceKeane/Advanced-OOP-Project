@@ -1,8 +1,6 @@
 package ie.gmit.sw;
 
 import java.io.*;
-import java.time.*;
-import java.time.format.*;
 import javafx.application.*;
 import javafx.beans.property.*;
 import javafx.beans.value.*;
@@ -11,7 +9,6 @@ import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.*;
-import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.stage.*;
 import javafx.util.*;
@@ -92,12 +89,7 @@ public class AppWindow extends Application {
 			 *      i.e. we never directly update the view.
 			 * 
 			 */
-			customers.add(
-					new Customer("Sideshow Bob", 
-							LocalDateTime.of(1970, 7, 7, 0, 0), 
-							Status.Premium, 
-							new Image(new File("./images/bob.png").toURI().toString()))
-			);
+			
 		});
 		toolBar.getItems().add(btnAdd); //Add to the parent node and build the tree
 		
@@ -121,7 +113,6 @@ public class AppWindow extends Application {
 		box.getChildren().add(getFileChooserPane(stage)); //Add the sub tree to the main tree
 		box.getChildren().add(getTableView()); //Add the sub tree to the main tree
 		box.getChildren().add(toolBar); //Add the sub tree to the main tree
-		box.getChildren().add(new polyPanel());
 		
 		// Display the window
 		stage.show();
@@ -167,6 +158,11 @@ public class AppWindow extends Application {
 		return tp;
 	}
 	
+	private File getMethods() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/*
 	 * This method builds a table to display the customer details. This View
 	 * could also have been encapsulated inside its own class using the signature
@@ -200,35 +196,7 @@ public class AppWindow extends Application {
 			}
 		});
 		
-		//Creates an observable table column from a String field extracted from the Customer class
-		TableColumn<Customer, String> dob = new TableColumn<>("DOB");
-		dob.setCellValueFactory(new Callback<CellDataFeatures<Customer, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Customer, String> p) {
-				return new SimpleStringProperty(
-						DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).format(p.getValue().dob()));
-			}
-		});
-
-		//Creates an observable table column from a String field extracted from the Customer class
-		TableColumn<Customer, String> status = new TableColumn<>("Status");
-		status.setCellValueFactory(new Callback<CellDataFeatures<Customer, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Customer, String> p) {
-				return new SimpleStringProperty(p.getValue().status().toString());
-			}
-		});
-
-		//Creates an observable table column from an Image attribute of the Customer class
-		TableColumn<Customer, ImageView> img = new TableColumn<>("Image");
-		img.setCellValueFactory(new Callback<CellDataFeatures<Customer, ImageView>, ObservableValue<ImageView>>() {
-			public ObservableValue<ImageView> call(CellDataFeatures<Customer, ImageView> p) {
-				return new SimpleObjectProperty<>(new ImageView(p.getValue().image()));
-			}
-		});
-
-		tv.getColumns().add(name); //Add nodes to the tree
-		tv.getColumns().add(dob);  //Add nodes to the tree
-		tv.getColumns().add(status); //Add nodes to the tree
-		tv.getColumns().add(img);  //Add nodes to the tree
+		
 		return tv;
 	}
 }

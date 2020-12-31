@@ -25,13 +25,7 @@ public class CustomerFactory {
 	
 	private CustomerFactory() {
 		model = FXCollections.observableArrayList (
-				new Customer("Montgomery Burns", LocalDateTime.of(1890, 9, 15, 0, 0), Status.Luxury, getImage("burns.png")),
-				new Customer("Bart Simpson", LocalDateTime.of(1982, 2, 15, 0, 0), Status.Steerage, getImage("bart.png")),
-				new Customer("Homer Simpson", LocalDateTime.of(1956, 5, 12, 0, 0), Status.Steerage, getImage("homer.png")),
-				new Customer("Moe Szyslak", LocalDateTime.of(1927, 11, 24, 0, 0), Status.Basic, getImage("moe.png")),
-				new Customer("Carl Carlson", LocalDateTime.of(1960, 7, 30, 0, 0), Status.Premium, getImage("karl.png")),
-				new Customer("Nelson Muntz", LocalDateTime.of(1977, 10, 30, 0, 0), Status.Economy, getImage("nelson.png")),
-				new Customer("Diamond Joe Quimby", LocalDateTime.of(1941, 12, 7, 0, 0), Status.Luxury, getImage("quimby.png"))
+
 		);
 	}
 	
@@ -47,9 +41,5 @@ public class CustomerFactory {
 		 * interface ObservableList extends java.util.List
 		 */
 		return model;
-	}
-	
-	private Image getImage(String file) {
-		return new Image(new File("./images/" + file).toURI().toString());
 	}
 }

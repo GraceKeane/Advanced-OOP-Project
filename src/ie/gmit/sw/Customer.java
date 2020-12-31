@@ -11,5 +11,5 @@ package ie.gmit.sw;
 import java.time.*;
 import javafx.scene.image.*;
 
-public record Customer(String name, LocalDateTime dob, Status status, Image image) {
+public record Customer(String name, double numOfLines) {
 }
