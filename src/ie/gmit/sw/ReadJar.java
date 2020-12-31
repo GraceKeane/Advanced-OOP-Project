@@ -11,6 +11,7 @@ import java.util.jar.JarInputStream;
 
 /**
  * Runner class reads in a jar file and prints out the data.
+ * Calculated 1 metric - SLOC.
  * 
  * @author Grace Keane
  * @version Java 15
