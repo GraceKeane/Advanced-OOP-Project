@@ -1,6 +1,9 @@
 package ie.gmit.sw;
 
 import java.io.*;
+import java.lang.reflect.Method;
+import java.util.jar.JarEntry;
+import java.util.jar.JarInputStream;
 import javafx.application.*;
 import javafx.beans.property.*;
 import javafx.beans.value.*;
@@ -125,7 +128,7 @@ public class AppWindow extends Application {
 	 *  class TitledPane using inheritance and moved all of the method into its own
 	 *  class (OCP).  
 	 */
-	private TitledPane getFileChooserPane(Stage stage) {
+	private TitledPane getFileChooserPane(Stage stage) throws ClassNotFoundException {
 		VBox panel = new VBox(); //** A concrete strategy ***
 
 		txtFile = new TextField(); //A leaf node

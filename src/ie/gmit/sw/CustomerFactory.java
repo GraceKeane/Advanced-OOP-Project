@@ -18,6 +18,7 @@ import java.io.*;
 import java.time.*;
 import javafx.collections.*;
 import javafx.scene.image.*;
+
 public class CustomerFactory {
 	private static final CustomerFactory cf = new CustomerFactory();
 	// Observer pattern

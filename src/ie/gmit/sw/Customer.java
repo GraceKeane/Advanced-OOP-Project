@@ -8,8 +8,6 @@ package ie.gmit.sw;
  *  
  *  Bean class
  */
-import java.time.*;
-import javafx.scene.image.*;
 
 public record Customer(String name, double numOfLines) {
 }

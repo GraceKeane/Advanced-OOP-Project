@@ -4,6 +4,10 @@ import java.io.File;
 import java.lang.reflect.Method;
 import java.util.Scanner;
 
+/**
+ * visit class implements my matric. 
+ * 
+ */
 public class visit {
 	
 	public static void getVisit(Class node) {
@@ -31,6 +35,7 @@ public class visit {
 	        sc.nextLine();
 	        count++;
 	      }
+	      
 	      System.out.println("Total Number of Lines: " + count);
 
 	      // close scanner

@@ -5,11 +5,19 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Scanner;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
-
 import javafx.application.*;
+
+/**
+ * 
+ * @author Grace Keane
+ * @version Java 15
+ * 
+ * Runner class that reads a jar file and applied one metric to it.
+ * Runs a GUI.
+ * 
+ */
 
 public class Runner {
 	
@@ -42,7 +50,6 @@ public class Runner {
 			    //list.stream().filter(predicate);
 			    
 			    Method[] methods = cls.getMethods(); //Get the set of methods
-			
 			   
 			}
 			next = in.getNextJarEntry();
@@ -52,7 +59,5 @@ public class Runner {
 		Application.launch(AppWindow.class, args);
 	
 	}
-
-	
 }
 

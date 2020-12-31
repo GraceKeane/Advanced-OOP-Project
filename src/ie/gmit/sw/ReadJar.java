@@ -1,4 +1,4 @@
-package ie.gmit.sw;
+/*package ie.gmit.sw;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,6 +18,8 @@ import java.util.jar.JarInputStream;
  * @since 25/12/2020
  * 
  */
+
+/*
 public class ReadJar {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
@@ -55,4 +57,4 @@ public class ReadJar {
 			next = in.getNextJarEntry();
 		}
 	}
-}
+}*/
