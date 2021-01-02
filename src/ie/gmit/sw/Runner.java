@@ -22,9 +22,6 @@ import javafx.application.*;
 public class Runner {
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException{
-			
-		// Launching GUI
-	    //Application.launch(AppWindow.class, args);
 
 		// Reading in the jar file & extracting all class names 
 		JarInputStream in = new JarInputStream(new FileInputStream(new File("./commons-text-1.9.jar")));

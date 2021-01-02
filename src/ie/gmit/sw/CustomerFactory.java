@@ -19,14 +19,17 @@ import java.time.*;
 import javafx.collections.*;
 import javafx.scene.image.*;
 
-public class CustomerFactory {
+public class CustomerFactory extends AppWindow{
 	private static final CustomerFactory cf = new CustomerFactory();
 	// Observer pattern
 	private ObservableList<Customer> model;
 	
 	private CustomerFactory() {
 		model = FXCollections.observableArrayList (
-
+				new Customer("Grace Keane", 1, ""),
+				new Customer("G00359990", 2, ""),
+				new Customer(" ", 3, "./commons-text-1.9.jar")
+				
 		);
 	}
 	

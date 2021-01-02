@@ -20,7 +20,7 @@ public class AppWindow extends Application {
 	private ObservableList<Customer> customers; //The Model - a list of observers.
 	private TableView<Customer> tv; //The View - a composite of GUI components
 	private TextField txtFile; //A control, part of the View and a leaf node.
-	
+		
 	@Override
 	public void start(Stage stage) throws Exception { //This is a ***Template Method***
 		CustomerFactory cf = CustomerFactory.getInstance(); //Get the singleton instance
@@ -79,37 +79,6 @@ public class AppWindow extends Application {
 		btnQuit.setOnAction(e -> System.exit(0)); //Plant an observer on the button
 		toolBar.getItems().add(btnQuit); //Add to the parent node and build the tree
 		
-		Button btnAdd = new Button("Add"); //A Leaf node
-		btnAdd.setOnAction(e -> { //Plant an observer on the button
-			/*
-			 * For the sake of simplicity of explanation, the instance of Customer is
-			 * hard-wired into the application. The important things to note are the
-			 * following:
-			 * 
-			 *   1) This lambda implementation of EventHandler<ActionEvent> is an 
-			 *      example of a **Controller** in the MVC. 
-			 *   2) We update the View (TableView) by changing the Model (ObservableList), 
-			 *      i.e. we never directly update the view.
-			 * 
-			 */
-			
-		});
-		toolBar.getItems().add(btnAdd); //Add to the parent node and build the tree
-		
-		
-		Button btnDelete = new Button("Delete"); //A Leaf node
-		btnDelete.setOnAction(e -> { //Plant an observer on the button
-			/*
-			 * Get the selected Customer object from the View (TableView) and
-			 * remove it from the Model (ObservableList). Do not try to update
-			 * the view directly.
-			 */
-			
-			Customer c = tv.getSelectionModel().getSelectedItem();
-			customers.remove(c);
-		});
-		toolBar.getItems().add(btnDelete); //Add to the parent node and build the tree
-		
 		/*
 		 * Add all the sub trees of nodes to the parent node and build the tree
 		 */
@@ -144,10 +113,11 @@ public class AppWindow extends Application {
 
 		Button btnProcess = new Button("Process"); //A leaf node
 		btnProcess.setOnAction(e -> { //Plant an observer on the button
-			File f = new File(txtFile.getText());
-			System.out.println("[INFO] Processing file " + f.getName());
-
-		});
+		File f = new File(txtFile.getText());	
+		System.out.println("[INFO] Processing file " + f.getName());	
+			
+	});
+		
 		
 		ToolBar tb = new ToolBar(); //A composite node
 		tb.getItems().add(btnOpen); //Add to the parent node and build a sub tree
@@ -162,7 +132,6 @@ public class AppWindow extends Application {
 	}
 	
 	private File getMethods() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -199,7 +168,7 @@ public class AppWindow extends Application {
 			}
 		});
 		
-		
+		tv.getColumns().add(name); //Add nodes to the tree
 		return tv;
 	}
 }
