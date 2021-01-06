@@ -1,9 +1,6 @@
 package ie.gmit.sw;
 
 import java.io.*;
-import java.lang.reflect.Method;
-import java.util.jar.JarEntry;
-import java.util.jar.JarInputStream;
 import javafx.application.*;
 import javafx.beans.property.*;
 import javafx.beans.value.*;
@@ -20,11 +17,13 @@ public class AppWindow extends Application {
 	private ObservableList<Customer> customers; //The Model - a list of observers.
 	private TableView<Customer> tv; //The View - a composite of GUI components
 	private TextField txtFile; //A control, part of the View and a leaf node.
+	
+	Database db = new Database();
 		
 	@Override
 	public void start(Stage stage) throws Exception { //This is a ***Template Method***
-		CustomerFactory cf = CustomerFactory.getInstance(); //Get the singleton instance
-		customers = cf.getCustomers(); //Get the Model 
+		//CustomerFactory cf = CustomerFactory.getInstance(); //Get the singleton instance
+		//customers = cf.getCustomers(); //Get the Model 
 		
 		/*
 		 * The GUI is based on the ** Composite Pattern ** and is a tree of nodes, some
@@ -79,6 +78,14 @@ public class AppWindow extends Application {
 		btnQuit.setOnAction(e -> System.exit(0)); //Plant an observer on the button
 		toolBar.getItems().add(btnQuit); //Add to the parent node and build the tree
 		
+		Button btnShow = new Button("Show all"); //A Leaf node
+		btnShow.setOnAction(e -> { //Plant an observer on the button
+		db.showContents(); 
+		});
+		toolBar.getItems().add(btnShow);
+		
+		
+		
 		/*
 		 * Add all the sub trees of nodes to the parent node and build the tree
 		 */
@@ -97,7 +104,7 @@ public class AppWindow extends Application {
 	 *  class TitledPane using inheritance and moved all of the method into its own
 	 *  class (OCP).  
 	 */
-	private TitledPane getFileChooserPane(Stage stage) throws ClassNotFoundException {
+	private TitledPane getFileChooserPane(Stage stage) {
 		VBox panel = new VBox(); //** A concrete strategy ***
 
 		txtFile = new TextField(); //A leaf node
@@ -115,6 +122,16 @@ public class AppWindow extends Application {
 		btnProcess.setOnAction(e -> { //Plant an observer on the button
 		File f = new File(txtFile.getText());	
 		System.out.println("[INFO] Processing file " + f.getName());	
+		
+		try {
+			db.go(f.toString());
+		} catch(FileNotFoundException ex) {
+			ex.printStackTrace();
+		} catch(ClassNotFoundException ex) {
+			ex.printStackTrace();
+		} catch(IOException ex) {
+			ex.printStackTrace();
+		}
 			
 	});
 		
@@ -164,7 +181,7 @@ public class AppWindow extends Application {
 		TableColumn<Customer, String> name = new TableColumn<>("Name");
 		name.setCellValueFactory(new Callback<CellDataFeatures<Customer, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Customer, String> p) {
-				return new SimpleStringProperty(p.getValue().name());
+				return new SimpleStringProperty(p.getValue().getName());
 			}
 		});
 		

@@ -1,34 +1,41 @@
-/*package ie.gmit.sw;
+package ie.gmit.sw;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
+
+import javafx.application.*;
+
 /**
- * Runner class reads in a jar file and prints out the data.
- * Calculated 1 metric - SLOC.
  * 
  * @author Grace Keane
  * @version Java 15
- * @since 25/12/2020
+ * 
+ * Runner class that reads a jar file and applied one metric to it.
+ * Runs a GUI.
  * 
  */
 
-/*
 public class ReadJar {
-
-	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
-		
-		// Launching GUI
-	    //Application.launch(AppWindow.class, args);
+	public String inputFile;
+	private List<String> root = new ArrayList<>();
+	
+	public ReadJar(String inputFile) {
+		super();
+		this.inputFile = inputFile;
+	}
+	
+	public void read(String inputFile) throws FileNotFoundException, IOException, ClassNotFoundException{
 
 		// Reading in the jar file & extracting all class names 
-		JarInputStream in = new JarInputStream(new FileInputStream(new File("./commons-text-1.9.jar")));
+		JarInputStream in = new JarInputStream(new FileInputStream(new File(inputFile)));
 		JarEntry next = in.getNextJarEntry();
 				
 		while (next != null) {
@@ -42,8 +49,9 @@ public class ReadJar {
 				System.out.println(name);
 				
 				// Loading the class
-			    Class cls = Class.forName("ie.gmit.sw.Runner");  
-			    cls.getClass();
+			    Class cls = Class.forName(name); 
+			    System.out.println("Classes: " + cls.getClass().toString());
+			    
 			    visit.getVisit(cls);
 			    
 			    // Stream
@@ -51,10 +59,10 @@ public class ReadJar {
 			    //list.stream().filter(predicate);
 			    
 			    Method[] methods = cls.getMethods(); //Get the set of methods
-			
 			   
 			}
 			next = in.getNextJarEntry();
 		}
 	}
-}*/
+}
+
