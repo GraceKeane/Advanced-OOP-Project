@@ -66,7 +66,7 @@ public class AppWindow extends Application {
 		 */
 		VBox box = new VBox();
 		box.setPadding(new Insets(10));
-		box.setSpacing(8);
+		box.setSpacing(9);
 
 		//**Strategy Pattern**. Configure the Context with a Concrete Strategy
 		Scene scene = new Scene(box); 
@@ -178,7 +178,7 @@ public class AppWindow extends Application {
 		 *  and the inner class a ConcreteObserver. The method call() is analogous to the 
 		 *  notify() method in the Observer Pattern.
 		 */
-		TableColumn<Customer, String> name = new TableColumn<>("Name");
+		TableColumn<Customer, String> name = new TableColumn<>("BSc (Hons) in Computing in Software Development");
 		name.setCellValueFactory(new Callback<CellDataFeatures<Customer, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Customer, String> p) {
 				return new SimpleStringProperty(p.getValue().getName());
