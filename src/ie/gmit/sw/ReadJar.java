@@ -50,11 +50,11 @@ public class ReadJar {
 				
 				// Loading the class
 			    Class cls = Class.forName(name); 
-			    System.out.println("Classes: " + cls.getClass().toString());
-			    System.out.println("Classes: " + cls.getMethods().toString());
-			    
-			    // Class to count the lines
 			    visit.getVisit(cls);
+			    System.out.println("Classes: " + cls.getClass().toString());
+			    System.out.println("Classes: " + cls.hashCode());
+			    System.out.println("Methods: " + cls.getMethods());
+			    System.out.println("Name: " + cls.getName());
 			   			   
 			}
 			next = in.getNextJarEntry();

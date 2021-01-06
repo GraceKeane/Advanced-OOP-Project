@@ -41,29 +41,23 @@ public class Database {
 				// Loading the class
 			    Class cls = Class.forName(name);  
 			    System.out.println("Class name: " + cls.getClasses());
-			    System.out.println("Class discription: " + cls.descriptorString());
-			    System.out.println("Member (bool): " + cls.isMemberClass());
+			    System.out.println("Class Methods: " + cls.getMethods());
 				    
 			    root.add(cls.getClasses().toString());
 			    root.add(cls.descriptorString().toString());
-			    root.add(cls.descriptorString().toString());
 			    
 			    db.storeRoot();    
-				    
 			}
+			next = in.getNextJarEntry();
 		}
 		db.shutdown();
 	}
 		
 		public void showContents() {
-			System.out.println("Print out all data");
+			//Query 1: Show all customers.
+			System.out.println("\n[Query] Show all contents of jar file");
 			root.stream()
-			.forEach(System.out::println);
-		}
-		
-		public void emptyDatabase() {
-			root.clear();
-			db.storeRoot();
-		
+			.forEach(System.out::println);;
+			
 		}
 	}

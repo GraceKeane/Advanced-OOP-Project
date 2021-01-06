@@ -5,14 +5,17 @@ import java.lang.reflect.Method;
 import java.util.Scanner;
 
 /**
- * visit class implements my matric. 
+ * visit class implements my matric. It counts the number of
+ * lines in the jar file.
+ * 
+ * @author Grace Keane
+ * @version Java 15
  * 
  */
 public class visit {
 	
 	public static void getVisit(Class node) {
 		// Store the name of class or something else in object store -> object.store
-		// compute some metric on the class (1 or more)
 		
 		Method [] m = node.getMethods();
 		for(Method n : m){

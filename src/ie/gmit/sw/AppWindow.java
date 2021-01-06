@@ -13,17 +13,23 @@ import javafx.scene.layout.*;
 import javafx.stage.*;
 import javafx.util.*;
 
+/**
+ * 
+ * 
+ * @author Grace Keane
+ * @version Java 15 
+ */
 public class AppWindow extends Application {
 	private ObservableList<Customer> customers; //The Model - a list of observers.
 	private TableView<Customer> tv; //The View - a composite of GUI components
 	private TextField txtFile; //A control, part of the View and a leaf node.
 	
+	// Object of database
 	Database db = new Database();
 		
 	@Override
 	public void start(Stage stage) throws Exception { //This is a ***Template Method***
-		//CustomerFactory cf = CustomerFactory.getInstance(); //Get the singleton instance
-		//customers = cf.getCustomers(); //Get the Model 
+		
 		
 		/*
 		 * The GUI is based on the ** Composite Pattern ** and is a tree of nodes, some
@@ -41,8 +47,8 @@ public class AppWindow extends Application {
 		 * programme the GUI from scratch, as it's much quicker, even if it is verbose.
 		 */
 		stage.setTitle("GMIT - B.Sc. in Computing (Software Development)");
-		stage.setWidth(800);
-		stage.setHeight(600);
+		stage.setWidth(700);
+		stage.setHeight(400);
 		
 		
 		/* The following is an example of the ** Observer Pattern**. Use a lambda 
@@ -122,6 +128,7 @@ public class AppWindow extends Application {
 		btnProcess.setOnAction(e -> { //Plant an observer on the button
 		File f = new File(txtFile.getText());	
 		System.out.println("[INFO] Processing file " + f.getName());	
+		ReadJar r = new ReadJar(f.toString());
 		
 		try {
 			db.go(f.toString());
@@ -130,6 +137,8 @@ public class AppWindow extends Application {
 		} catch(ClassNotFoundException ex) {
 			ex.printStackTrace();
 		} catch(IOException ex) {
+			ex.printStackTrace();
+		} catch(NoClassDefFoundError ex) {
 			ex.printStackTrace();
 		}
 			
@@ -148,9 +157,9 @@ public class AppWindow extends Application {
 		return tp;
 	}
 	
-	private File getMethods() {
+	/*private File getMethods() {
 		return null;
-	}
+	}*/
 
 	/*
 	 * This method builds a table to display the customer details. This View
