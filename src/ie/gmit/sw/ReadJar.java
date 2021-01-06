@@ -15,11 +15,11 @@ import javafx.application.*;
 
 /**
  * 
+ * Class that reads a non hard coded jar file and outputs some reflection
+ * call methods on the jar contents.
+ * 
  * @author Grace Keane
  * @version Java 15
- * 
- * Runner class that reads a jar file and applied one metric to it.
- * Runs a GUI.
  * 
  */
 
@@ -46,11 +46,13 @@ public class ReadJar {
 				if (!name.contains("$"))
 					name.substring(0, name.length() - ".class".length());
 				// Print out the name of the class
-				System.out.println(name);
+				System.out.println(name.toString());
 				
 				// Loading the class
 			    Class cls = Class.forName(name); 
 			    visit.getVisit(cls);
+			    
+			    // Calling methods to run on the jar file - reflection
 			    System.out.println("Classes: " + cls.getClass().toString());
 			    System.out.println("Classes: " + cls.hashCode());
 			    System.out.println("Methods: " + cls.getMethods());

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  * visit class implements my matric. It counts the number of
- * lines in the jar file.
+ * lines in the hard coded jar file.
  * 
  * @author Grace Keane
  * @version Java 15

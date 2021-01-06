@@ -13,6 +13,15 @@ import java.util.jar.JarInputStream;
 import one.microstream.storage.types.EmbeddedStorage;
 import one.microstream.storage.types.EmbeddedStorageManager;
 
+/**
+ * The class Database uses EmbeddedStorage & 
+ * EmbeddedStorageManager to save jar information
+ * into the folder "dta".
+ * 
+ * @author Grace Keane
+ * @version Java 15
+ * 
+ */
 public class Database {	
 
 	private EmbeddedStorageManager db = null;
@@ -28,6 +37,7 @@ public class Database {
 		JarEntry next = in.getNextJarEntry();
 		db = EmbeddedStorage.start(root, Paths.get("./dta"));
 					
+		// Iterating through the file
 		while (next != null) {
 			if (next.getName().endsWith(".class")) {
 				// Strip out from the name
@@ -35,11 +45,12 @@ public class Database {
 				name = name.replaceAll(".class", "");
 				if (!name.contains("$"))
 					name.substring(0, name.length() - ".class".length());
+				
 				// Print out the name of the class
 				System.out.println(name);
-				
 				// Loading the class
 			    Class cls = Class.forName(name);  
+			    // Calling information from the jar file by the use of reflection
 			    System.out.println("Class name: " + cls.getClasses());
 			    System.out.println("Class Methods: " + cls.getMethods());
 				    
@@ -52,12 +63,13 @@ public class Database {
 		}
 		db.shutdown();
 	}
-		
-		public void showContents() {
-			//Query 1: Show all customers.
-			System.out.println("\n[Query] Show all contents of jar file");
-			root.stream()
-			.forEach(System.out::println);;
+	
+	// Query 1
+	public void showContents() {
+		//Query 1: Show all customers.
+		System.out.println("\n[Query] Show all contents of jar file");
+		root.stream()
+		.forEach(System.out::println);;
 			
-		}
 	}
+}

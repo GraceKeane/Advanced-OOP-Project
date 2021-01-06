@@ -1,18 +1,16 @@
 package ie.gmit.sw;
 
 /**
- *  Customer is a record or a read-only bean class with a constructor that 
- *  matches the set of parameters in the record signature and a suite of 
- *  accessor methods. The default implementation of the methods equals() and 
- *  hashCode() aggregate all the attributes of the record.
- *  
- *  Bean class.
+ *  Customer is a record or a read-only bean class. It contains
+ *  important getter and setter methods that are used in the 
+ *  AppWindow class to call information.
  *  
  *  @author Grace Keane
  *  @version Java 15
  */
 
 public class Customer{
+	// Encapsulated vars
 	private String name;
 	private double numOfLines;
 	private String jarfile;
