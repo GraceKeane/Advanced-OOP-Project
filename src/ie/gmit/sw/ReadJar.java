@@ -58,7 +58,6 @@ public class ReadJar {
 				
 				// Loading the class
 			    Class cls = Class.forName(name); 
-			    visit.getVisit(cls);
 			   			   
 			}
 			next = in.getNextJarEntry();

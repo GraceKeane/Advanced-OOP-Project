@@ -1,12 +1,12 @@
 package ie.gmit.sw;
 
 /**
- *  Customer is a record or a read-only bean class. It contains
- *  important getter and setter methods that are used in the 
- *  AppWindow class to call information.
+ * Customer is a record or a read-only bean class. It contains
+ * important getter and setter methods that are used in the 
+ * AppWindow class to call information.
  *  
- *  @author Grace Keane
- *  @version Java 15
+ * @author Grace Keane
+ * @version Java 15
  */
 
 public class Customer{
@@ -15,7 +15,7 @@ public class Customer{
 	private double numOfLines;
 	private String jarfile;
 	
-	public Customer(String name, double numOfLines, String jarfile) {
+	private Customer(String name, double numOfLines, String jarfile) {
 		super();
 		this.name = name;
 		this.numOfLines = numOfLines;

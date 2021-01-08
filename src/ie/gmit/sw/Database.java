@@ -83,11 +83,12 @@ public class Database {
 			    root.add("Descriptor string: " + cls.descriptorString().toString());
 			    root.add(" ");
 			    root.add("Method: " + cls.getMethods().toString());
+			    // SLOC Metric
+			    System.out.println("Size (SLOC): " + next.getSize());
 			    
 			    db.storeRoot();    
 			}
 			next = in.getNextJarEntry();
-			System.out.println();
 		}
 		db.shutdown();
 	}

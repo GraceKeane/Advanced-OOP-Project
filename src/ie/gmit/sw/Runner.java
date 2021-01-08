@@ -1,12 +1,7 @@
 package ie.gmit.sw;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.jar.JarEntry;
-import java.util.jar.JarInputStream;
 import javafx.application.*;
 
 /**
