@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.concurrent.TimeUnit;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
@@ -51,23 +52,44 @@ public class Database {
 				// Loading the class
 			    Class cls = Class.forName(name);  
 			    // Calling information from the jar file by the use of reflection
-			    System.out.println("Class name: " + cls.getClasses());
-			    System.out.println("Class Methods: " + cls.getMethods());
+			    System.out.println("");
+			    System.out.println("Class name: " + cls);
+			    System.out.println("");
+			    System.out.println("Class Method: " + cls.getMethods());
+			    System.out.println("");
+			    System.out.println("Class Modifier: " + cls.getModifiers());
+			    System.out.println("");
+			    System.out.println("Class Hashcode: " + cls.hashCode());
+			    System.out.println("");
+			    System.out.println("Member?: " + cls.isMemberClass());
+			    System.out.println("");
 				    
-			    root.add(cls.getClasses().toString());
-			    root.add(cls.descriptorString().toString());
+			    root.add(" ");
+			    root.add("Class name: " + cls.toString());
+			    root.add(" ");
+			    root.add("Descriptor string: " + cls.descriptorString().toString());
+			    root.add(" ");
+			    root.add("Method: " + cls.getMethods().toString());
 			    
 			    db.storeRoot();    
 			}
 			next = in.getNextJarEntry();
+			System.out.println();
 		}
 		db.shutdown();
 	}
 	
 	// Query 1
 	public void showContents() {
-		//Query 1: Show all customers.
-		System.out.println("\n[Query] Show all contents of jar file");
+		//Query 1: Show all data.
+		System.out.println("\n[Query] Show all contents of database");
+		try {
+			System.out.println("\n[Query] Processing...");
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		root.stream()
 		.forEach(System.out::println);;
 			

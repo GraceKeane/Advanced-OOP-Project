@@ -51,12 +51,6 @@ public class ReadJar {
 				// Loading the class
 			    Class cls = Class.forName(name); 
 			    visit.getVisit(cls);
-			    
-			    // Calling methods to run on the jar file - reflection
-			    System.out.println("Classes: " + cls.getClass().toString());
-			    System.out.println("Classes: " + cls.hashCode());
-			    System.out.println("Methods: " + cls.getMethods());
-			    System.out.println("Name: " + cls.getName());
 			   			   
 			}
 			next = in.getNextJarEntry();
