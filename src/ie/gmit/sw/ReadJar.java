@@ -14,7 +14,6 @@ import java.util.jar.JarInputStream;
 import javafx.application.*;
 
 /**
- * 
  * Class that reads a non hard coded jar file and outputs some reflection
  * call methods on the jar contents.
  * 
@@ -32,8 +31,17 @@ public class ReadJar {
 		this.inputFile = inputFile;
 	}
 	
+	/**
+	 * Method read processes, reads and prints the contents
+	 * of the selected jar file to the console.
+	 * 
+	 * @param inputFile
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * 
+	 */
 	public void read(String inputFile) throws FileNotFoundException, IOException, ClassNotFoundException{
-
 		// Reading in the jar file & extracting all class names 
 		JarInputStream in = new JarInputStream(new FileInputStream(new File(inputFile)));
 		JarEntry next = in.getNextJarEntry();

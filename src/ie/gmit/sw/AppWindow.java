@@ -1,6 +1,5 @@
 package ie.gmit.sw;
 
-import java.io.*;
 import javafx.application.*;
 import javafx.collections.*;
 import javafx.geometry.*;
@@ -10,20 +9,21 @@ import javafx.scene.layout.*;
 import javafx.stage.*;
 
 /**
- * Contains all functions relating to the GUI and also holds GUI design code.
+ * Contains all button functionality relating to the
+ * GUI and also holds some GUI design code such 
+ * as width and height of stage.
  * 
  * @author Grace Keane
  * @version Java 15 
  */
 public class AppWindow extends Application {
-	//The Model - a list of observers.
+	//The Model - a list of observers
 	private ObservableList<Customer> customers; 
 	//The View - a composite of GUI components
 	private TableView<Customer> tv; 
 	//A control, part of the View and a leaf node.
 	public static TextField txtFile; 
-	
-	
+
 	// Object of database
 	static Database db = new Database();
 	
@@ -33,7 +33,7 @@ public class AppWindow extends Application {
 	 * A stage contains scenes, each of which is a container window for other
 	 * containers or controls.
 	 * 
-	 * @param statge
+	 * @param stage
 	 * @throws Exception
 	 * 
 	 */
@@ -87,9 +87,8 @@ public class AppWindow extends Application {
 		/*
 		 * Add all the sub trees of nodes to the parent node and build the tree
 		 */
-		box.getChildren().add(TitledPane.getFileChooserPane(stage)); //Add the sub tree to the main tree
-		//box.getChildren().add(getTableView()); //Add the sub tree to the main tree
-		box.getChildren().add(toolBar); //Add the sub tree to the main tree
+		box.getChildren().add(TitledPane.getFileChooserPane(stage)); 
+		box.getChildren().add(toolBar);
 		
 		// Display the window
 		stage.show();

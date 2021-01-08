@@ -12,30 +12,33 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
- * 
- * Created class TitledPane to Adhere to the open closed principle (OCP).
- * This class contains all the processing design and functionality.
+ * Created class TitledPane to Adhere to the open closed principle (OCP). This
+ * class contains all the processing jar functionality.
  * 
  * @author Grace Keane
  * @version Java 15
  * 
  */
-public class TitledPane extends AppWindow{
+public class TitledPane extends AppWindow {
 
 	public TitledPane(String string, VBox panel) {
 		// TODO Auto-generated constructor stub
 	}
 
-	/*
-	 *  This method builds a TitledPane containing the controls for the file chooser 
-	 *  part of the application. 
+	 
+	/**
+	 * This method builds a TitledPane containing the controls for the file chooser
+	 * part of the application.
+	 * 
+	 * @param stage
+	 * 
 	 */
 	public static Node getFileChooserPane(Stage stage) {
 		// A concrete strategy
-		VBox panel = new VBox(); 
+		VBox panel = new VBox();
 
 		// Leaf node
-		txtFile = new TextField(); 
+		txtFile = new TextField();
 
 		// Leaf node
 		FileChooser fc = new FileChooser();
@@ -45,13 +48,13 @@ public class TitledPane extends AppWindow{
 		/*
 		 * Observer Pattern.
 		 * 
-		 * Using a lambda expression to plant an EventHandler<WindowEvent> 
-		 * observer on the stage Select file button. Database prints 
-		 * out information contained when "Show all" is clicked.
+		 * Using a lambda expression to plant an EventHandler<WindowEvent> observer on
+		 * the stage "Select file" button. Database prints out information contained
+		 * when "Show all" is clicked.
 		 * 
 		 */
-		Button btnOpen = new Button("Select File"); 
-		btnOpen.setOnAction(e -> { 
+		Button btnOpen = new Button("Select File");
+		btnOpen.setOnAction(e -> {
 			File f = fc.showOpenDialog(stage);
 			txtFile.setText(f.getAbsolutePath());
 		});
@@ -59,47 +62,45 @@ public class TitledPane extends AppWindow{
 		/*
 		 * Observer Pattern.
 		 * 
-		 * Using a lambda expression to plant an EventHandler<WindowEvent> 
-		 * observer on the stage for Process button. Program then processes
-		 * file in the command prompt straight away.
+		 * Using a lambda expression to plant an EventHandler<WindowEvent> observer on
+		 * the stage for "Process" button. Program then processes file in the command
+		 * prompt straight away.
 		 * 
 		 */
-		Button btnProcess = new Button("Process"); //A leaf node
-		btnProcess.setOnAction(e -> { //Plant an observer on the button
-		File f = new File(txtFile.getText());	
-		System.out.println("[INFO] Processing file " + f.getName());	
-		ReadJar r = new ReadJar(f.toString());
-		
-		// Exception handling
-		try {
-			db.go(f.toString());
-		} catch(FileNotFoundException ex) {
-			ex.printStackTrace();
-		} catch(ClassNotFoundException ex) {
-			ex.printStackTrace();
-		} catch(IOException ex) {
-			ex.printStackTrace();
-		} catch(NoClassDefFoundError ex) {
-			ex.printStackTrace();
-		}
-			
-	});
-		
-		ToolBar tb = new ToolBar(); //A composite node
-		tb.getItems().add(btnOpen); //Add to the parent node and build a sub tree
-		tb.getItems().add(btnProcess); //Add to the parent node and build a sub tree
+		Button btnProcess = new Button("Process"); // A leaf node
+		btnProcess.setOnAction(e -> { // Plant an observer on the button
+			File f = new File(txtFile.getText());
+			System.out.println("[INFO] Processing file " + f.getName());
+			ReadJar r = new ReadJar(f.toString());
 
-		panel.getChildren().add(txtFile); //Add to the parent node and build a sub tree
-		panel.getChildren().add(tb); //Add to the parent node and build a sub tree
-		
-		TitledPane p = new TitledPane("Select File to Process", panel); //Add to the parent node and build a sub tree
+			// Exception handling
+			try {
+				db.go(f.toString());
+			} catch (FileNotFoundException ex) {
+				ex.printStackTrace();
+			} catch (ClassNotFoundException ex) {
+				ex.printStackTrace();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			} catch (NoClassDefFoundError ex) {
+				ex.printStackTrace();
+			}
+
+		});
+
+		// A composite node
+		ToolBar tb = new ToolBar();
+		// Adding to the parent node and building a sub tree
+		tb.getItems().add(btnOpen); 
+		tb.getItems().add(btnProcess); 
+
+		panel.getChildren().add(txtFile);
+		panel.getChildren().add(tb); 
+
+		TitledPane p = new TitledPane("Select File to Process", panel); 
 		p.setCollapsible(false);
-		
-		return tb;
 
-		//TitledPane tp = new TitledPane("Select File to Process", panel); //Add to the parent node and build a sub tree
-		//tp.setCollapsible(false);
-		//return tp;
+		return tb;
 	}
 
 	public Object TitledPane;
@@ -110,7 +111,6 @@ public class TitledPane extends AppWindow{
 
 	private void panel(boolean b) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
-	

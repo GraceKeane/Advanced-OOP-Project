@@ -29,7 +29,7 @@ public class Runner {
 		// Iterating through the jar file
 		while (next != null) {
 			if (next.getName().endsWith(".class")) {
-				// Strip out / \\ from the name
+				// Strip out "/" "\\" from the name
 				String name = next.getName().replaceAll("/", "\\.");
 				name = name.replaceAll(".class", "");
 				if (!name.contains("$"))
@@ -42,7 +42,8 @@ public class Runner {
 				cls.getClass();
 				visit.getVisit(cls);
 
-				Method[] methods = cls.getMethods(); // Get the set of methods
+				// Get the set of methods
+				Method[] methods = cls.getMethods(); 
 
 			}
 			// Continuing through the jar

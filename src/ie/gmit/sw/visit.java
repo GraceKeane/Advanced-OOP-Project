@@ -5,46 +5,45 @@ import java.lang.reflect.Method;
 import java.util.Scanner;
 
 /**
- * visit class implements my matric. It counts the number of
- * lines in the hard coded jar file.
+ * visit class implements my matric. It counts the number of lines in the hard
+ * coded jar file.
  * 
  * @author Grace Keane
  * @version Java 15
  * 
  */
 public class visit {
-	
+
 	public static void getVisit(Class node) {
-		// Store the name of class or something else in object store -> object.store
-		
-		Method [] m = node.getMethods();
-		for(Method n : m){
-			n.getName();	
-		}	
-		
 		int count = 0;
 
-	    try {
-	      // create a new file object
-	      File file = new File("commons-text-1.9.jar");
+		Method[] m = node.getMethods();
+		for (Method n : m) {
+			n.getName();
+		}
 
-	      // create an object of Scanner
-	      // associated with the file
-	      Scanner sc = new Scanner(file);
+		try {
+			// create a new file object
+			File file = new File("commons-text-1.9.jar");
 
-	      // read each line and
-	      // count number of lines
-	      while(sc.hasNextLine()) {
-	        sc.nextLine();
-	        count++;
-	      }
-	      
-	      System.out.println("Total Number of Lines: " + count);
+			// create an object of Scanner
+			// associated with the file
+			Scanner sc = new Scanner(file);
 
-	      // close scanner
-	      sc.close();
-	    } catch (Exception e) {
-	      e.getStackTrace();
-	    }
+			// read each line and
+			// count number of lines
+			while (sc.hasNextLine()) {
+				sc.nextLine();
+				count++;
+			}
+
+			System.out.println("Total Number of Lines: " + count);
+
+			// close scanner
+			sc.close();
+
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
 	}
 }

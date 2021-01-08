@@ -32,6 +32,17 @@ public class Database {
 		super();
 	}
 		
+	/**
+	 * Iterates through the selected jar and prints out called reflection
+	 * information data based on the jar information. Then stores 
+	 * processed data in the database (dta folder)  
+	 * 
+	 * @param fileName takes in a file name
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * 
+	 */
 	public void go(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException{
 		// Reading in the jar file & extracting all class names 
 		JarInputStream in = new JarInputStream(new FileInputStream(new File(fileName)));
@@ -41,7 +52,7 @@ public class Database {
 		// Iterating through the file
 		while (next != null) {
 			if (next.getName().endsWith(".class")) {
-				// Strip out from the name
+				// Strip out "/" and "\\" from the name
 				String name = next.getName().replaceAll("/", "\\.");
 				name = name.replaceAll(".class", "");
 				if (!name.contains("$"))
@@ -51,7 +62,8 @@ public class Database {
 				System.out.println(name);
 				// Loading the class
 			    Class cls = Class.forName(name);  
-			    // Calling information from the jar file by the use of reflection
+			    
+			    // Calling information from the jar file using of reflection
 			    System.out.println("");
 			    System.out.println("Class name: " + cls);
 			    System.out.println("");
@@ -64,6 +76,7 @@ public class Database {
 			    System.out.println("Member?: " + cls.isMemberClass());
 			    System.out.println("");
 				    
+			    // Saving jar info to the database
 			    root.add(" ");
 			    root.add("Class name: " + cls.toString());
 			    root.add(" ");
@@ -81,7 +94,7 @@ public class Database {
 	
 	// Query 1
 	public void showContents() {
-		//Query 1: Show all data.
+		//Query 1: Show all data in the database.
 		System.out.println("\n[Query] Show all contents of database");
 		try {
 			System.out.println("\n[Query] Processing...");
@@ -92,6 +105,5 @@ public class Database {
 		}
 		root.stream()
 		.forEach(System.out::println);;
-			
 	}
 }

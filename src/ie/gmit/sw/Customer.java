@@ -22,6 +22,7 @@ public class Customer{
 		this.jarfile = jarfile;
 	}
 
+	// Getters and setters
 	public String getName() {
 		return name;
 	}
